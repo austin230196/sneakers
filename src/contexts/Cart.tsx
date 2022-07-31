@@ -69,7 +69,7 @@ const CartContextProvider: React.FC<PropsInterface> = ({children}: PropsInterfac
                     cart: [...copy]
                 }
             })
-            return false;
+            return true;
         }catch(err: any){
             console.log(err.message);
             return false;

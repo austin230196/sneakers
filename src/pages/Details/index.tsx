@@ -1,6 +1,8 @@
 import React, {useEffect, ReactElement, ReactNode, useState, MouseEventHandler} from "react";
 import {MdClose, MdArrowBackIos, MdArrowForwardIos} from "react-icons/md";
 import {AiOutlineShoppingCart} from "react-icons/ai";
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -171,10 +173,21 @@ const Details: React.FC<{}> = (): ReactElement => {
                                         {qty}
                                         <img src={minus} onClick={decreaseQty} alt="Minus" />
                                     </div>
-                                    <Button onClick={(_: any) => addToCart({
-                                        ...data,
-                                        qty
-                                    })} disabled={qty === 0 ? true : false} text="Add to Cart" icon={<AiOutlineShoppingCart />} />
+                                    <Button onClick={async (_: any) => {
+                                        let hasAdded = await addToCart({
+                                            ...data,
+                                            qty
+                                        })
+                                        if(hasAdded){
+                                            toast.success("Product added successfully", {
+
+                                            })
+                                        }else {
+                                            toast.error("Error adding product to cart", {
+
+                                            })
+                                        }
+                                    }} disabled={qty === 0 ? true : false} text="Add to Cart" icon={<AiOutlineShoppingCart />} />
                                 </div>
                             </div>
                         </div>

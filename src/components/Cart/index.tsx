@@ -1,5 +1,6 @@
 import React, {ReactElement} from 'react';
-
+import {toast} from "react-toastify";
+import {motion} from "framer-motion";
 
 
 
@@ -21,9 +22,16 @@ interface PropsInterface {
 const Cart: React.FC<PropsInterface> = ({}: PropsInterface): ReactElement | null => {
     const cartData = useCart();
     const {cart} = cartData.state;
-    console.log(cart);
+
     return (
-        <div className={clsx.cart}>
+        <motion.div
+        initial={{y: -100}}
+        animate={{y: 0}}
+        transition= {{
+            ease: "easeInOut",
+            duration: .3
+        }}
+         className={clsx.cart}>
             <div className={clsx.cart_top}>
                 <h2>Cart</h2>
             </div>
@@ -41,7 +49,7 @@ const Cart: React.FC<PropsInterface> = ({}: PropsInterface): ReactElement | null
                     </div>
                 </>) : <h3>Your cart is empty</h3> }
             </div>
-        </div>
+        </motion.div>
     )
 }
 
@@ -59,7 +67,14 @@ function CartItem ({image, name, price, qty, ...props}: CartItemInterface): Reac
                 <p>{`${new Intl.NumberFormat('en-us', {style: 'currency', currency: 'USD'}).format(price)} x ${qty}`} 
                 &nbsp; <b>{new Intl.NumberFormat('en-us', {style: 'currency', currency: 'USD'}).format(price * qty)}</b></p>
             </div>
-            <img src={deleteIcon} onClick={e => removeFromCart(props.id)} alt="Delete Icon" />
+            <img src={deleteIcon} onClick={async e => {
+                let hasRemoved = await removeFromCart(props.id);
+                if(hasRemoved){
+                    toast.success("Removed item from cart successfully")
+                }else {
+                    toast.error("Couldn't remove item from cart");
+                }
+            }} alt="Delete Icon" />
         </div>
     )
 }

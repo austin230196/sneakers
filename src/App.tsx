@@ -1,7 +1,7 @@
 import React, {useEffect, ReactElement} from 'react';
 import {Routes, Route} from "react-router-dom";
 
-import {Header} from "./components";
+import {Header, Toast} from "./components";
 import {CartContextProvider, ProductContextProvider} from "./contexts";
 import {Details} from "./pages";
 
@@ -15,6 +15,7 @@ function App(): ReactElement {
     <CartContextProvider>
       <ProductContextProvider>
         <div className="app">
+          <Toast />
           <Header />
           <Routes>
             <Route path="/" element={<Details />} />

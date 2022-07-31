@@ -35,7 +35,7 @@ interface IProps {
 }
 
 
-const ProductContextProvider = ({children}: IProps): ReactElement => {
+const ProductContextProvider: React.FC<IProps> = ({children}: IProps): ReactElement => {
     const [state, setState] = useState<IProductState>({
         products: [
             {
