@@ -87,6 +87,12 @@
 }
 
 
+@media screen and (max-width: 525px) {
+    .absolute_container {
+        right: -80px;
+    }
+}
+
 
 .mobile_menu_container {
     background-color: var(--secondary);
