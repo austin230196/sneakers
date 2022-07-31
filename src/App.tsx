@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, ReactElement} from 'react';
+import {Routes, Route} from "react-router-dom";
 
-function App() {
+import {Header} from "./components";
+import {CartContextProvider, ProductContextProvider} from "./contexts";
+import {Details} from "./pages";
+
+function App(): ReactElement {
+  useEffect(() => {
+    console.log("App is mounted");
+    document.title = "Sneakers";
+    return () => console.log("App is unmounted");
+  }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CartContextProvider>
+      <ProductContextProvider>
+        <div className="app">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Details />} />
+          </Routes>
+        </div>
+      </ProductContextProvider>
+    </CartContextProvider>
   );
 }
 

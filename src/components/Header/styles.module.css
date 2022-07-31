@@ -1,0 +1,139 @@
+.nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--gray-blue-light);
+    margin-bottom: 20px;
+}
+
+.nav_left {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.nav_left_items {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+.hamburger {
+    display: none;
+}
+
+.nav_left_items li {
+    padding: 40px 25px;
+    cursor: pointer;
+    letter-spacing: var(--letter-spacing);
+    border-bottom: 3px solid transparent;
+}
+
+.nav_left .nav_left_items li:active, .nav_left .nav_left_items li:hover {
+    border-bottom: 3px solid var(--primary);
+}
+
+.nav_left_items li:active a, li:hover a {
+    color: var(--gray-blue-dark);
+}
+
+.nav_left_items li a {
+    text-decoration: none;
+    color: var(--gray-blue);
+}
+
+.nav_right {
+    display: flex;
+    align-items: center;
+}
+
+.nav_cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 30px;
+    cursor: pointer;
+    position: relative;
+}
+
+.nav_cart_badge {
+    position: absolute;
+    top: -8px;
+    left: 10px;
+    background-color: var(--primary);
+    border-radius: 40%;
+    font-weight: bold;
+    padding: 2px 10px;
+    font-size: 0.65rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary);
+}
+
+.absolute_container {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 380px;
+}
+
+
+
+.mobile_menu_container {
+    background-color: var(--secondary);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 20px;
+}
+
+
+
+.mobile_menu_container img {
+    cursor: pointer
+}
+
+
+.mobile_menu_container ul {
+    padding: 0;
+    margin-top: 60px;
+    list-style-type: none;
+}
+
+.mobile_menu_container ul li {
+    min-width: 200px;
+    margin: 25px 0px;
+    padding: 15px 0px;
+}
+
+.mobile_menu_container ul li a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    color: #000
+}
+
+
+@media screen and (max-width: 1072px) {
+    .nav_left_items {
+        display: none;
+    }
+    .hamburger {
+        display: inline-block;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+}
+
+
+

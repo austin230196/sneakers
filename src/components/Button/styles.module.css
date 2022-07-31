@@ -1,0 +1,14 @@
+.button {
+    border: none;
+    border-radius: 10px;
+    background-color: var(--primary);
+    color: var(--secondary);
+    padding: 15px;
+    height: 100%;
+    letter-spacing: var(--letter-spacing);
+
+}
+
+.button:disabled {
+    background-color: var(--primary-light);
+}
